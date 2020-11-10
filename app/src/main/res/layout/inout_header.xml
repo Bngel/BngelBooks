@@ -9,13 +9,13 @@
     <RelativeLayout
         android:layout_width="380dp"
         android:layout_height="150dp"
-        android:background="@drawable/background">
+        android:background="@drawable/header_background">
 
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:id="@+id/headerImage"
-            android:src="@drawable/srh"
+            android:src="@drawable/header_portrait_srh"
             android:layout_marginTop="37dp"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="30dp"/>
@@ -23,7 +23,7 @@
         <RelativeLayout
             android:layout_width="185dp"
             android:layout_height="110dp"
-            android:background="@drawable/transparent"
+            android:background="@drawable/header_transparent_detail"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
             android:id="@+id/squareImage"
