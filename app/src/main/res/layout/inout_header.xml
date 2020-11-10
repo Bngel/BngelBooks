@@ -1,0 +1,106 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_centerInParent="true">
+
+    <RelativeLayout
+        android:layout_width="380dp"
+        android:layout_height="150dp"
+        android:background="@drawable/background">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/headerImage"
+            android:src="@drawable/srh"
+            android:layout_marginTop="37dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="30dp"/>
+
+        <RelativeLayout
+            android:layout_width="185dp"
+            android:layout_height="110dp"
+            android:background="@drawable/transparent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/squareImage"
+            android:layout_toRightOf="@id/headerImage">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/remainText"
+                android:text="结余:"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold|italic"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1024.00"
+                android:textSize="21sp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_below="@id/remainText"
+                android:id="@+id/remainNumText"
+                android:layout_alignLeft="@id/remainText"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="收入:"
+                android:textSize="16sp"
+                android:textColor="#db9abc"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginBottom="2dp"
+                android:id="@+id/incomeText"
+                android:layout_below="@id/remainNumText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1024.00"
+                android:textSize="16sp"
+                android:textColor="#9b8691"
+                android:textStyle="bold"
+                android:layout_alignBottom="@id/incomeText"
+                android:layout_toRightOf="@id/incomeText"
+                android:id="@+id/incomeNumText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="支出:"
+                android:textSize="16sp"
+                android:textColor="#db9abc"
+                android:textStyle="bold"
+                android:id="@+id/costText"
+                android:layout_marginRight="14dp"
+                android:layout_marginBottom="2dp"
+                android:layout_alignLeft="@id/incomeText"
+                android:layout_below="@id/incomeText"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1024.00"
+                android:textSize="16sp"
+                android:textColor="#9b8691"
+                android:textStyle="bold"
+                android:layout_alignBottom="@id/costText"
+                android:layout_toRightOf="@id/costText"
+                android:id="@+id/costNumText" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</LinearLayout>
