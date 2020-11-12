@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import com.example.bngelbooks.R
+import com.example.bngelbooks.ui.WidgetSetting
 import kotlinx.android.synthetic.main.inout_header.view.*
 import kotlin.text.*
 
@@ -13,17 +14,11 @@ class InOutHeaderLayout(context: Context, attrs: AttributeSet) : LinearLayout(co
 
     init {
         LayoutInflater.from(context).inflate(R.layout.inout_header,this)
-        setFont()
+        setFonts()
     }
 
-    private fun setFont() {
-        val mtypeface = Typeface.createFromAsset(context.assets,"font/HGHP_CNKI.TTF")
-        remainText.setTypeface(mtypeface)
-        remainNumText.setTypeface(mtypeface)
-        incomeText.setTypeface(mtypeface)
-        incomeNumText.setTypeface(mtypeface)
-        costText.setTypeface(mtypeface)
-        costNumText.setTypeface(mtypeface)
+    private fun setFonts() {
+        WidgetSetting.setFonts(context, listOf(remainText,remainNumText,incomeText,incomeNumText,costText,costNumText))
     }
 
     fun setBalance(balance: String) {
