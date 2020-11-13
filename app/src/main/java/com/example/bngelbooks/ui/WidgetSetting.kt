@@ -3,7 +3,6 @@ package com.example.bngelbooks.ui
 import android.content.Context
 import android.graphics.Typeface
 import android.widget.TextView
-import com.example.bngelbooks.BngelbookApplication
 
 object WidgetSetting {
 
