@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bngelbooks.logic.model.Order
-import com.example.bngelbooks.ui.CostItemList.CostItemAdapter
+import com.example.bngelbooks.ui.OrderList.OrderAdapter
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import kotlinx.android.synthetic.main.order_page_layout.*
@@ -16,7 +16,7 @@ import com.example.bngelbooks.R
 
 class OrderPage : Fragment() {
 
-    lateinit var adapter: CostItemAdapter
+    lateinit var adapter: OrderAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +40,7 @@ class OrderPage : Fragment() {
     private fun initRecyclerView() {
         val items = ArrayList<Order>()
         initDatas(items)
-        adapter = CostItemAdapter(items)
+        adapter = OrderAdapter(items)
         recyclerView.adapter = adapter
         val LayoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager = LayoutManager

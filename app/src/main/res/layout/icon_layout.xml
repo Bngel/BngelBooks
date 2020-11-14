@@ -1,0 +1,17 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="40dp"
+    android:layout_height="80dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:id="@+id/iconImg"/>
+
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:id="@+id/iconType"/>
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.bngelbooks
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.example.bngelbooks.ui.AddOrderLayout.AddOrderActivity
 import com.example.bngelbooks.ui.MeLayout.MePage
 import com.example.bngelbooks.ui.OrderLayout.OrderPage
 import com.example.bngelbooks.ui.StatisticsLayout.StatisticsPage
@@ -17,6 +19,8 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity() {
 
     private lateinit var fragments: ArrayList<Fragment>
+
+    private val ADD_ORDER_INTENT = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +49,8 @@ class MainActivity : AppCompatActivity() {
             override fun onPageScrollStateChanged(state: Int) {}
         })
         fab.setOnClickListener {
-            Toast.makeText(this,"TEST", Toast.LENGTH_SHORT).show()
+            val intent_add_order = Intent(this, AddOrderActivity::class.java)
+            startActivityForResult(intent_add_order, ADD_ORDER_INTENT)
         }
     }
 

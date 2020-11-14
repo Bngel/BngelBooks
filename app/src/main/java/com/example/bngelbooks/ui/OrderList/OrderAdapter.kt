@@ -1,4 +1,4 @@
-package com.example.bngelbooks.ui.CostItemList
+package com.example.bngelbooks.ui.OrderList
 
 
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import com.example.bngelbooks.logic.model.Order
 import com.example.bngelbooks.ui.WidgetSetting
 import kotlinx.android.synthetic.main.cost_item_layout.view.*
 
-class CostItemAdapter(val items: List<Order>) : RecyclerView.Adapter<CostItemAdapter.ViewHolder>(){
+class OrderAdapter(val items: List<Order>) : RecyclerView.Adapter<OrderAdapter.ViewHolder>(){
 
     inner class ViewHolder(view: View):RecyclerView.ViewHolder(view) {
         val TypeImg: ImageView = view.findViewById(R.id.EatImg)

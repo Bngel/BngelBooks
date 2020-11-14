@@ -2,7 +2,10 @@ package com.example.bngelbooks.ui
 
 import android.content.Context
 import android.graphics.Typeface
+import android.media.Image
+import android.widget.ImageView
 import android.widget.TextView
+import com.example.bngelbooks.logic.model.TypeIcon
 
 object WidgetSetting {
 
