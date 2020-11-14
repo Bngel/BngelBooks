@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="#FFFFFF"
+        app:itemTextColor="@color/color_state"
         app:menu="@menu/menu_bottom_navigation"/>
 
     <androidx.viewpager.widget.ViewPager

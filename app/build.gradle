@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 30
@@ -44,6 +45,8 @@ dependencies {
     implementation  'com.scwang.smart:refresh-layout-kernel:2.0.1'
     implementation  fileTree(dir: "libs", include: ["*.jar"])
     implementation 'com.scwang.smart:refresh-header-classics:2.0.1'
+    implementation 'androidx.room:room-runtime:2.2.5'
+    kapt 'androidx.room:room-compiler:2.2.5'
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

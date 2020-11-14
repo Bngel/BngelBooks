@@ -3,6 +3,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.example.bngelbooks.ui.InOutHeader.BookSelectedHeader
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bookselectedLayout"/>
+
     <com.example.headerpractice.InOutHeaderLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

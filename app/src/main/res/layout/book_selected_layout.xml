@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="35dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:background="@drawable/textview_background"
+        android:clickable="true"
+        android:id="@+id/textLayout"
+        android:focusable="true">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="账本选择"
+            android:background="@android:color/transparent"
+            android:clickable="false"
+            android:layout_weight="1"
+            android:id="@+id/textView" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:src="@drawable/triangle"
+            android:id="@+id/imageView"/>
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="35dp"
+        android:id="@+id/searchBtn"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/search"/>
+
+</RelativeLayout>

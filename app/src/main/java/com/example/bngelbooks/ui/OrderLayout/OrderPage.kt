@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.bngelbooks.logic.model.Cost_Item
+import com.example.bngelbooks.logic.model.Order
 import com.example.bngelbooks.ui.CostItemList.CostItemAdapter
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
@@ -38,7 +38,7 @@ class OrderPage : Fragment() {
     }
 
     private fun initRecyclerView() {
-        val items = ArrayList<Cost_Item>()
+        val items = ArrayList<Order>()
         initDatas(items)
         adapter = CostItemAdapter(items)
         recyclerView.adapter = adapter
@@ -47,18 +47,18 @@ class OrderPage : Fragment() {
         refreshSet()
     }
 
-    private fun initDatas(items: ArrayList<Cost_Item>) {
+    private fun initDatas(items: ArrayList<Order>) {
         repeat(10) {
-            items.add(Cost_Item(R.drawable.eat, "吃喝", "食堂九元套餐", 9.00, Date()))
+            items.add(Order(R.drawable.eat, "吃喝", "食堂九元套餐", 9.00, Date().toString()))
         }
         repeat(10) {
-            items.add(Cost_Item(R.drawable.traffic, "交通", "车费", 20000.00, Date()))
+            items.add(Order(R.drawable.traffic, "交通", "车费", 20000.00, Date().toString()))
         }
         repeat(10) {
-            items.add(Cost_Item(R.drawable.medical, "医疗", "复查身体指标", 200.00, Date()))
+            items.add(Order(R.drawable.medical, "医疗", "复查身体指标", 200.00, Date().toString()))
         }
         repeat(10) {
-            items.add(Cost_Item(R.drawable.clothes, "服饰", "优衣库", 149.00, Date()))
+            items.add(Order(R.drawable.clothes, "服饰", "优衣库", 149.00, Date().toString()))
         }
     }
 
