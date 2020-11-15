@@ -3,13 +3,13 @@ package com.example.bngelbooks.ui.AddOrderLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bngelbooks.R
 import com.example.bngelbooks.logic.model.TypeIcon
+import com.example.bngelbooks.ui.WidgetSetting
 
 class IconAdapter(val icons: List<TypeIcon>): RecyclerView.Adapter<IconAdapter.ViewHolder>(){
 
@@ -22,6 +22,10 @@ class IconAdapter(val icons: List<TypeIcon>): RecyclerView.Adapter<IconAdapter.V
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.icon_layout, parent, false)
         val viewHolder = ViewHolder(view)
+        viewHolder.itemView.setOnClickListener {
+            val position = viewHolder.adapterPosition
+            WidgetSetting.current_icon.value = icons[position]
+        }
         return viewHolder
     }
 
@@ -29,7 +33,7 @@ class IconAdapter(val icons: List<TypeIcon>): RecyclerView.Adapter<IconAdapter.V
         val icon = icons[position]
         holder.IconImg.setImageResource(icon.iconImg)
         holder.IconName.text = icon.typeName
-        }
+    }
 
     override fun getItemCount() = icons.size
 
