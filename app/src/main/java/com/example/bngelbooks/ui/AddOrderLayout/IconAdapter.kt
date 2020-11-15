@@ -13,6 +13,8 @@ import com.example.bngelbooks.ui.WidgetSetting
 
 class IconAdapter(val icons: List<TypeIcon>): RecyclerView.Adapter<IconAdapter.ViewHolder>(){
 
+    var current_icon = icons[0]
+
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val IconImg: ImageView = view.findViewById(R.id.iconImg)
         val IconName: TextView = view.findViewById(R.id.iconType)
@@ -25,6 +27,7 @@ class IconAdapter(val icons: List<TypeIcon>): RecyclerView.Adapter<IconAdapter.V
         viewHolder.itemView.setOnClickListener {
             val position = viewHolder.adapterPosition
             WidgetSetting.current_icon.value = icons[position]
+            current_icon = icons[position]
         }
         return viewHolder
     }

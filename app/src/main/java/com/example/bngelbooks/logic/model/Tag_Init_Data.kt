@@ -39,6 +39,18 @@ private val others_tag_valid = listOf(
     Tag("手续费"),Tag("零碎花销"),Tag("其他")
 )
 
+private val salary_tag_valid = listOf(
+    Tag("公司")
+)
+
+private val partjob_tag_valid = listOf(
+    Tag("零工")
+)
+
+private val redlope_tag_valid = listOf(
+    Tag("压岁钱"),Tag("亲戚")
+)
+
 fun get_eatTags() = eat_tag_valid
 
 fun get_trafficTags() = traffic_tag_valid
@@ -54,3 +66,9 @@ fun get_studyTags() = study_tag_valid
 fun get_playTags() = play_tag_valid
 
 fun get_othersTags() = others_tag_valid
+
+fun get_salaryTags() = salary_tag_valid
+
+fun get_partjobTags() = partjob_tag_valid
+
+fun get_redlopeTags() = redlope_tag_valid

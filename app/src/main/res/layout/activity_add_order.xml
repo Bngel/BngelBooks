@@ -71,6 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
+                android:overScrollMode="never"
                 android:id="@+id/iconsView"/>
 
         </LinearLayout>
@@ -124,6 +125,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_gravity="center_horizontal"
+                android:overScrollMode="never"
                 android:id="@+id/tagsView"/>
 
             <RelativeLayout

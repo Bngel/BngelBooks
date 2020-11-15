@@ -2,7 +2,7 @@ package com.example.bngelbooks.logic.model
 
 import com.example.bngelbooks.R
 
-private val typeIcon_valid = listOf(
+private val cost_typeIcon_valid = listOf(
     TypeIcon(R.drawable.eat, "吃喝"),
     TypeIcon(R.drawable.traffic, "交通"),
     TypeIcon(R.drawable.clothes, "服饰"),
@@ -13,4 +13,13 @@ private val typeIcon_valid = listOf(
     TypeIcon(R.drawable.others, "其他")
 )
 
-fun getTypeIcons() = typeIcon_valid
+private val income_typeIcon_valid = listOf(
+    TypeIcon(R.drawable.salary, "工资"),
+    TypeIcon(R.drawable.partjob, "兼职"),
+    TypeIcon(R.drawable.redlope, "红包")
+)
+
+fun getCostTypeIcons() = cost_typeIcon_valid
+
+fun getIncomeTypeIcons() = income_typeIcon_valid
+

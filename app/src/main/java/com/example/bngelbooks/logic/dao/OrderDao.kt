@@ -12,7 +12,7 @@ interface OrderDao {
     @Update
     fun updateOrder (newOrder: Order)
 
-    @Query("select * from `Order`")
+    @Query("select * from Orders")
     fun loadAllOrders() : List<Order>
 
     @Delete

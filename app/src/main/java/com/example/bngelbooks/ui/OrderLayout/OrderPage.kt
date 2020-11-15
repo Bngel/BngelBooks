@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.bngelbooks.BngelbookApplication
 import com.example.bngelbooks.logic.model.Order
 import com.example.bngelbooks.ui.OrderList.OrderAdapter
 import com.scwang.smart.refresh.footer.ClassicsFooter
@@ -13,6 +14,8 @@ import kotlinx.android.synthetic.main.order_page_layout.*
 import java.util.*
 import kotlin.collections.ArrayList
 import com.example.bngelbooks.R
+import com.example.bngelbooks.logic.dao.OrderDao
+import com.example.bngelbooks.logic.database.OrderDatabase
 
 class OrderPage : Fragment() {
 
@@ -21,7 +24,6 @@ class OrderPage : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
