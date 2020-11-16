@@ -17,4 +17,7 @@ interface OrderDao {
 
     @Delete
     fun deleteOrder(order: Order)
+
+    @Query("delete from Orders")
+    fun deleteAllOrders()
 }

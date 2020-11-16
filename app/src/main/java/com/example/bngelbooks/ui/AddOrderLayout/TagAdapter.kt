@@ -12,7 +12,6 @@ import com.example.bngelbooks.ui.WidgetSetting
 
 class TagAdapter(val tags: List<Tag>): RecyclerView.Adapter<TagAdapter.ViewHolder>(){
 
-    var prev_tag = -1
     var final_tag = ""
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
@@ -26,8 +25,8 @@ class TagAdapter(val tags: List<Tag>): RecyclerView.Adapter<TagAdapter.ViewHolde
         val viewHolder = ViewHolder(view)
         viewHolder.itemView.setOnClickListener {
             val position = viewHolder.adapterPosition
-            WidgetSetting.current_tag.value = position
             final_tag = tags[position].tagText
+            WidgetSetting.current_tag.value = position
         }
         return viewHolder
     }

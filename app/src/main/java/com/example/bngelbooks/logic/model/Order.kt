@@ -2,6 +2,7 @@ package com.example.bngelbooks.logic.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.sql.Timestamp
 import java.util.*
 
 @Entity(tableName = "Orders")

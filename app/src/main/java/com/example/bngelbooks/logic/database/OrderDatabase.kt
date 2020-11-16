@@ -9,7 +9,7 @@ import com.example.bngelbooks.logic.model.Order
 import com.example.bngelbooks.ui.AddOrderLayout.AddOrderActivity
 import com.example.bngelbooks.ui.OrderLayout.OrderPage
 
-@Database (version = 1, entities = [Order::class])
+@Database (version = 2, entities = [Order::class])
 abstract class OrderDatabase : RoomDatabase(){
 
     abstract fun orderDao(): OrderDao

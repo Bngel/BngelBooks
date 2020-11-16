@@ -23,3 +23,9 @@ fun getCostTypeIcons() = cost_typeIcon_valid
 
 fun getIncomeTypeIcons() = income_typeIcon_valid
 
+fun judgeIconType(typeName: String) = when (typeName) {
+    "吃喝","交通","服饰","日用品","医疗","学习","娱乐","其他" -> "支出"
+    "工资","兼职","红包" -> "收入"
+    else -> "未知"
+}
+

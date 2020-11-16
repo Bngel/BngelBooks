@@ -1,28 +1,48 @@
 package com.example.bngelbooks.ui.OrderLayout
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.bngelbooks.BngelbookApplication
 import com.example.bngelbooks.logic.model.Order
 import com.example.bngelbooks.ui.OrderList.OrderAdapter
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import kotlinx.android.synthetic.main.order_page_layout.*
-import java.util.*
-import kotlin.collections.ArrayList
 import com.example.bngelbooks.R
 import com.example.bngelbooks.logic.dao.OrderDao
 import com.example.bngelbooks.logic.database.OrderDatabase
+import com.example.bngelbooks.logic.model.judgeIconType
+import com.example.bngelbooks.ui.WidgetSetting
+import kotlinx.android.synthetic.main.inout_header.*
+import kotlin.concurrent.thread
 
-class OrderPage : Fragment() {
+class OrderPage() : Fragment() {
 
     lateinit var adapter: OrderAdapter
+    lateinit var orderDao: OrderDao
+    lateinit var orders : List<Order>
+    var sum_of_cost = 0.0
+    var sum_of_income = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WidgetSetting.current_income.observe(this, Observer {
+            incomeNumText.text = it.toString()
+            remainNumText.text = (incomeNumText.text.toString().toDouble() - costNumText.text.toString().toDouble()).toString()
+        })
+        WidgetSetting.current_cost.observe(this, Observer {
+            costNumText.text = it.toString()
+            remainNumText.text = (incomeNumText.text.toString().toDouble() - costNumText.text.toString().toDouble()).toString()
+        })
+        WidgetSetting.refresh_needed.observe(this, Observer {
+            if (it)
+                initRecyclerView()
+        })
     }
 
     override fun onCreateView(
@@ -39,29 +59,37 @@ class OrderPage : Fragment() {
         initRecyclerView()
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        orderDao = OrderDatabase.getDatabase(context).orderDao()
+    }
+
+    private fun initOrdersList() {
+        thread {
+            orders = orderDao.loadAllOrders()
+        }.join()
+    }
+
     private fun initRecyclerView() {
-        val items = ArrayList<Order>()
-        initDatas(items)
-        adapter = OrderAdapter(items)
+        initOrdersList()
+        sum_of_cost = 0.0
+        sum_of_income = 0.0
+        for (order in orders) {
+            when (judgeIconType(order.TypeName)) {
+                "收入" ->
+                    sum_of_income += order.Value
+                "支出" ->
+                    sum_of_cost += -order.Value
+            }
+        }
+        WidgetSetting.current_cost.value = sum_of_cost
+        WidgetSetting.current_income.value = sum_of_income
+        adapter = OrderAdapter(orders)
         recyclerView.adapter = adapter
         val LayoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager = LayoutManager
         refreshSet()
-    }
-
-    private fun initDatas(items: ArrayList<Order>) {
-        repeat(10) {
-            items.add(Order(R.drawable.eat, "吃喝", "食堂九元套餐", 9.00, Date().toString()))
-        }
-        repeat(10) {
-            items.add(Order(R.drawable.traffic, "交通", "车费", 20000.00, Date().toString()))
-        }
-        repeat(10) {
-            items.add(Order(R.drawable.medical, "医疗", "复查身体指标", 200.00, Date().toString()))
-        }
-        repeat(10) {
-            items.add(Order(R.drawable.clothes, "服饰", "优衣库", 149.00, Date().toString()))
-        }
+        WidgetSetting.refresh_needed.value = false
     }
 
     private fun refreshSet() {
@@ -69,7 +97,8 @@ class OrderPage : Fragment() {
         refreshLayout.setRefreshFooter(ClassicsFooter(context))
         refreshLayout.setEnableLoadMore(false)
         refreshLayout.setOnRefreshListener { refreshlayout ->
-            refreshlayout.finishRefresh(2000,false,false)
+            initRecyclerView()
+            refreshLayout.finishRefresh()
         }
     }
 }

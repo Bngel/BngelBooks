@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -20,7 +21,15 @@
 
         <com.scwang.smart.refresh.header.ClassicsHeader
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            app:srlTextPulling="@string/srl_header_pulling"
+            app:srlTextLoading="@string/srl_header_loading"
+            app:srlTextRelease="@string/srl_header_release"
+            app:srlTextFinish="@string/srl_header_finish"
+            app:srlTextFailed="@string/srl_header_failed"
+            app:srlTextUpdate="@string/srl_header_update"
+            app:srlTextSecondary="@string/srl_header_secondary"
+            app:srlTextRefreshing="@string/srl_header_refreshing"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
