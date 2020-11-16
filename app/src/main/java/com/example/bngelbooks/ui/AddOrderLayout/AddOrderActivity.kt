@@ -33,6 +33,7 @@ class AddOrderActivity : AppCompatActivity() {
         orderDao = OrderDatabase.getDatabase(this).orderDao()
 
         SmallIconImg.setImageResource(R.drawable.eat)
+        WidgetSetting.setFont(this,SmallIconType)
         SmallIconType.text = "吃喝"
 
         val icons = ArrayList<TypeIcon>()

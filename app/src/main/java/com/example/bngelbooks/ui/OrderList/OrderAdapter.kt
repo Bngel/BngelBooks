@@ -1,6 +1,7 @@
 package com.example.bngelbooks.ui.OrderList
 
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bngelbooks.R
 import com.example.bngelbooks.logic.model.Order
+import com.example.bngelbooks.ui.OrderDetailLayout.OrderDetailActivity
 import com.example.bngelbooks.ui.WidgetSetting
 import kotlinx.android.synthetic.main.cost_item_layout.view.*
 
@@ -25,7 +27,12 @@ class OrderAdapter(val items: List<Order>) : RecyclerView.Adapter<OrderAdapter.V
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.cost_item_layout,parent,false)
         WidgetSetting.setFonts(parent.context, listOf(view.TypeText, view.ValueText, view.TagText))
-        return ViewHolder(view)
+        val viewHolder = ViewHolder(view)
+        viewHolder.itemView.setOnClickListener {
+            val intent_order_detail = Intent(parent.context, OrderDetailActivity::class.java)
+            parent.context.startActivity(intent_order_detail)
+        }
+        return viewHolder
     }
 
     override fun getItemCount() = items.size
