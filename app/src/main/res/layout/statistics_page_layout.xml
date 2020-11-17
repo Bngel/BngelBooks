@@ -1,17 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <com.example.bngelbooks.ui.StaticsHeader.StaticsHeaderLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/white">
 
-    <com.openxu.cview.chart.rosechart.NightingaleRoseChart
-        android:id="@+id/roseChartSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <com.example.bngelbooks.ui.StaticsHeader.StaticsHeaderLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/scsCostImg"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/scs_cost"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:id="@+id/scsCostText"
+                android:layout_marginLeft="20dp"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorNoSelected"
+                android:text="支出"/>
+
+        </LinearLayout>
+
+        <com.openxu.cview.chart.rosechart.NightingaleRoseChart
+            android:id="@+id/roseChart_Cost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/scsIncomeImg"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/scs_income"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:id="@+id/scsIncomeText"
+                android:layout_marginLeft="20dp"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorNoSelected"
+                android:text="收入"/>
+        </LinearLayout>
+
+        <com.openxu.cview.chart.rosechart.NightingaleRoseChart
+            android:id="@+id/roseChart_Income"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</ScrollView>
