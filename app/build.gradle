@@ -23,6 +23,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 allprojects {
@@ -46,6 +55,7 @@ dependencies {
     implementation  fileTree(dir: "libs", include: ["*.jar"])
     implementation 'com.scwang.smart:refresh-header-classics:2.0.1'
     implementation 'androidx.room:room-runtime:2.2.5'
+    implementation 'com.google.code.gson:gson:2.8.5'
     kapt 'androidx.room:room-compiler:2.2.5'
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

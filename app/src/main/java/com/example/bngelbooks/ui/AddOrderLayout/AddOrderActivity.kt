@@ -3,7 +3,13 @@ package com.example.bngelbooks.ui.AddOrderLayout
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.view.View
+import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bngelbooks.R
 import com.example.bngelbooks.logic.dao.OrderDao
@@ -33,7 +39,7 @@ class AddOrderActivity : AppCompatActivity() {
         orderDao = OrderDatabase.getDatabase(this).orderDao()
 
         SmallIconImg.setImageResource(R.drawable.eat)
-        WidgetSetting.setFont(this,SmallIconType)
+        WidgetSetting.setFont(this, SmallIconType)
         SmallIconType.text = "吃喝"
 
         val icons = ArrayList<TypeIcon>()
@@ -56,7 +62,7 @@ class AddOrderActivity : AppCompatActivity() {
             SmallIconImg.setImageResource(new_Icon.iconImg)
             SmallIconType.text = new_Icon.typeName
             tagAdapter = when (new_Icon.typeName) {
-                "吃喝" ->  TagAdapter(get_eatTags())
+                "吃喝" -> TagAdapter(get_eatTags())
                 "交通" -> TagAdapter(get_trafficTags())
                 "服饰" -> TagAdapter(get_clothesTags())
                 "日用品" -> TagAdapter(get_dailyTags())
@@ -70,13 +76,13 @@ class AddOrderActivity : AppCompatActivity() {
                 else -> TagAdapter(listOf())
             }
             tagsView.adapter = tagAdapter
-            Log.d("INOUT","ICON")
+            Log.d("INOUT", "ICON")
         })
 
         WidgetSetting.current_tag.observe(this, Observer { new_Tag ->
             selectedTag.text = tagAdapter.final_tag
             tagsView.adapter = tagAdapter
-            Log.d("INOUT","TAG")
+            Log.d("INOUT", "TAG")
         })
 
         incomeBtn.setOnClickListener {
@@ -103,13 +109,14 @@ class AddOrderActivity : AppCompatActivity() {
             val icon = iconAdapter.current_icon
             val tag = tagAdapter.final_tag
             val value_text = orderEdit.text.toString()
-            var value:Double = if (value_text.isEmpty()) 0.0 else value_text.toDouble()
+            var value: Double = if (value_text.isEmpty()) 0.0 else value_text.toDouble()
             if (in_out == COST) value = -value
-            val order = Order(icon.iconImg, icon.typeName,
+            val order = Order(
+                icon.iconImg, icon.typeName,
                 tag, value,
                 Timestamp(Date().time).toString()
             )
-            Log.d("INOUT",order.Tag)
+            Log.d("INOUT", order.Tag)
             thread {
                 // orderDao.deleteAllOrders()
                 order.id = orderDao.insertOrder(order)
@@ -118,8 +125,21 @@ class AddOrderActivity : AppCompatActivity() {
             WidgetSetting.refresh_needed.value = true
             finish()
         }
-    }
 
+        DIYtagText.setOnClickListener {
+            if (DIYtagEdit.isVisible) {
+                DIYtagEdit.setText("")
+                DIYtagEdit.visibility = View.GONE
+            }
+            else
+                DIYtagEdit.visibility = View.VISIBLE
+        }
+
+        DIYtagEdit.doAfterTextChanged {
+            selectedTag.text = DIYtagEdit.text
+            tagAdapter.final_tag = selectedTag.text.toString()
+        }
+    }
     override fun onResume() {
         super.onResume()
         selectedTag.text = "请选择标签"

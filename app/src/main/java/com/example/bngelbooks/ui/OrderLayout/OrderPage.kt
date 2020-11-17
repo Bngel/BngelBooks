@@ -66,7 +66,7 @@ class OrderPage() : Fragment() {
 
     private fun initOrdersList() {
         thread {
-            orders = orderDao.loadAllOrders()
+            orders = orderDao.loadAllOrders().asReversed()
         }.join()
     }
 
@@ -74,7 +74,7 @@ class OrderPage() : Fragment() {
         initOrdersList()
         sum_of_cost = 0.0
         sum_of_income = 0.0
-        for (order in orders) {
+        for (order in orders.asReversed()) {
             when (judgeIconType(order.TypeName)) {
                 "收入" ->
                     sum_of_income += order.Value

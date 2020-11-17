@@ -10,8 +10,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bngelbooks.R
 import com.example.bngelbooks.logic.model.Order
+import com.example.bngelbooks.logic.model.TypeIcon
 import com.example.bngelbooks.ui.OrderDetailLayout.OrderDetailActivity
 import com.example.bngelbooks.ui.WidgetSetting
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.cost_item_layout.view.*
 
 class OrderAdapter(val items: List<Order>) : RecyclerView.Adapter<OrderAdapter.ViewHolder>(){
@@ -30,6 +32,10 @@ class OrderAdapter(val items: List<Order>) : RecyclerView.Adapter<OrderAdapter.V
         val viewHolder = ViewHolder(view)
         viewHolder.itemView.setOnClickListener {
             val intent_order_detail = Intent(parent.context, OrderDetailActivity::class.java)
+            val position = viewHolder.adapterPosition
+            val order = items[position]
+
+            intent_order_detail.putExtra("order", Gson().toJson(order))
             parent.context.startActivity(intent_order_detail)
         }
         return viewHolder

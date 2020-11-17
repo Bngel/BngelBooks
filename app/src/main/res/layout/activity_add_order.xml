@@ -141,7 +141,6 @@
                     android:clickable="false"
                     android:text="请选择标签"
                     android:textColor="@color/colorNoSelected"
-                    android:layout_alignTop="@id/DIYtag"
                     android:layout_alignParentLeft="true"/>
 
                 <ImageView
@@ -150,28 +149,43 @@
                     android:id="@+id/DIYtag"
                     android:clickable="false"
                     android:src="@drawable/new_tag"
-                    android:layout_toLeftOf="@id/DIYtagText"/>
+                    android:layout_toLeftOf="@id/DIYtagText"
+                    android:layout_alignBottom="@id/selectedTag"/>
 
                 <TextView
+                    android:id="@+id/DIYtagText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="-1dp"
+                    android:clickable="false"
+                    android:text="-自定义标签-"
+                    android:textSize="12sp" />
+
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:textSize="12sp"
                     android:clickable="false"
-                    android:id="@+id/DIYtagText"
-                    android:text="-自定义标签-"
-                    android:layout_alignParentRight="true" />
+                    android:id="@+id/DIYtagEdit"
+                    android:layout_marginTop="6dp"
+                    android:layout_alignParentLeft="true"
+                    android:hint="请输入自定义标签"
+                    android:visibility="invisible"
+                    android:singleLine="true"
+                    android:layout_below="@id/DIYtagText" />
 
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ok"
+                    android:layout_margin="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/okBtn"/>
             </RelativeLayout>
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ok"
-                android:layout_margin="10dp"
-                android:layout_gravity="right|bottom"
-                android:id="@+id/okBtn"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
