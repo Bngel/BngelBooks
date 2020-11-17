@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bngelbooks.R
 import com.example.bngelbooks.logic.model.Order
 import com.example.bngelbooks.logic.model.TypeIcon
+import com.example.bngelbooks.logic.model.judgeIconType
 import com.example.bngelbooks.ui.OrderDetailLayout.OrderDetailActivity
 import com.example.bngelbooks.ui.WidgetSetting
 import com.google.gson.Gson
@@ -48,6 +49,7 @@ class OrderAdapter(val items: List<Order>) : RecyclerView.Adapter<OrderAdapter.V
         holder.TypeImg.setImageResource(item.TypeImgId)
         holder.TypeName.text = item.TypeName
         holder.TagName.text = item.Tag
-        holder.Value.text = String.format("%.2f", item.Value)
+        val valueType = if(judgeIconType(item.TypeName)=="支出") "-" else "+"
+        holder.Value.text = String.format("%s%.2f",valueType, item.Value)
     }
 }

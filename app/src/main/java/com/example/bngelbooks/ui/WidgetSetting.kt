@@ -24,6 +24,8 @@ object WidgetSetting {
 
     var refresh_needed = MutableLiveData<Boolean>()
 
+    var chart_loading = MutableLiveData<Boolean>()
+
     init {
         current_cost.value = 0.0
         current_income.value = 0.0

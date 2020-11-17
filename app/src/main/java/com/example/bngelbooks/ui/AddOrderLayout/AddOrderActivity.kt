@@ -76,13 +76,13 @@ class AddOrderActivity : AppCompatActivity() {
                 else -> TagAdapter(listOf())
             }
             tagsView.adapter = tagAdapter
-            Log.d("INOUT", "ICON")
+            selectedTag.text = "请选择标签"
+            tagAdapter.final_tag = ""
         })
 
         WidgetSetting.current_tag.observe(this, Observer { new_Tag ->
             selectedTag.text = tagAdapter.final_tag
             tagsView.adapter = tagAdapter
-            Log.d("INOUT", "TAG")
         })
 
         incomeBtn.setOnClickListener {
@@ -110,7 +110,7 @@ class AddOrderActivity : AppCompatActivity() {
             val tag = tagAdapter.final_tag
             val value_text = orderEdit.text.toString()
             var value: Double = if (value_text.isEmpty()) 0.0 else value_text.toDouble()
-            if (in_out == COST) value = -value
+            // if (in_out == COST) value = -value
             val order = Order(
                 icon.iconImg, icon.typeName,
                 tag, value,
@@ -123,6 +123,7 @@ class AddOrderActivity : AppCompatActivity() {
             }
 
             WidgetSetting.refresh_needed.value = true
+            WidgetSetting.chart_loading.value = true
             finish()
         }
 

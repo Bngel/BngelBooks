@@ -41,6 +41,7 @@ class OrderDetailActivity : AppCompatActivity() {
                 orderDao.deleteOrder(order)
             }
             WidgetSetting.refresh_needed.value = true
+            WidgetSetting.chart_loading.value = true
             finish()
         }
     }

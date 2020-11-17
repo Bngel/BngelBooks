@@ -2,14 +2,16 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/me_title"
+    <com.example.bngelbooks.ui.StaticsHeader.StaticsHeaderLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textColor="@android:color/black"
-        android:text="Statistic"
-        android:textSize="20sp" />
+        android:layout_height="wrap_content"/>
+
+    <com.openxu.cview.chart.rosechart.NightingaleRoseChart
+        android:id="@+id/roseChartSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

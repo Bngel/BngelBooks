@@ -79,7 +79,7 @@ class OrderPage() : Fragment() {
                 "收入" ->
                     sum_of_income += order.Value
                 "支出" ->
-                    sum_of_cost += -order.Value
+                    sum_of_cost += order.Value
             }
         }
         WidgetSetting.current_cost.value = sum_of_cost

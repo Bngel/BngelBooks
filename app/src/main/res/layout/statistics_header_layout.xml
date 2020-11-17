@@ -1,0 +1,18 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="收支统计"
+        android:clickable="false"
+        android:background="@drawable/textview_background"
+        android:textColor="@color/colorNoSelected"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:id="@+id/statisticsText" />
+
+</RelativeLayout>
