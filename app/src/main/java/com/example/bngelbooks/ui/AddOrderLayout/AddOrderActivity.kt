@@ -111,12 +111,13 @@ class AddOrderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             val tag = tagAdapter.final_tag
             val value_text = orderEdit.text.toString()
             var value: Double = if (value_text.isEmpty()) 0.0 else value_text.toDouble()
+            val account = accountList.selectedItem
             // if (in_out == COST) value = -value
             val order = Order(
                 icon.iconImg, icon.typeName,
                 tag, value,
                 Timestamp(Date().time).toString(),
-                accountList.selectedItem.toString()
+                if (account != null) account.toString() else ""
             )
             thread {
                 // orderDao.deleteAllOrders()
@@ -125,6 +126,7 @@ class AddOrderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
 
             WidgetSetting.refresh_needed.value = true
             WidgetSetting.chart_loading.value = true
+            WidgetSetting.account_loading.value = true
             finish()
         }
 

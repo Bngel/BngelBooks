@@ -42,6 +42,7 @@ class OrderDetailActivity : AppCompatActivity() {
             }
             WidgetSetting.refresh_needed.value = true
             WidgetSetting.chart_loading.value = true
+            WidgetSetting.account_loading.value = true
             finish()
         }
     }
