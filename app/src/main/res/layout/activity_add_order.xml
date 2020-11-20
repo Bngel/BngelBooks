@@ -53,6 +53,13 @@
 
         </RelativeLayout>
 
+        <Spinner
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:id="@+id/accountList"/>
+
     </RelativeLayout>
 
     <LinearLayout

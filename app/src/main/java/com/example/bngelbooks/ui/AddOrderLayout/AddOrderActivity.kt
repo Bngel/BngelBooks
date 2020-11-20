@@ -3,12 +3,12 @@ package com.example.bngelbooks.ui.AddOrderLayout
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
+import android.view.Gravity
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bngelbooks.R
@@ -23,10 +23,11 @@ import kotlin.collections.ArrayList
 import kotlin.concurrent.thread
 import androidx.lifecycle.Observer as Observer
 
-class AddOrderActivity : AppCompatActivity() {
+class AddOrderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     lateinit var iconAdapter: IconAdapter
     lateinit var tagAdapter: TagAdapter
     lateinit var orderDao: OrderDao
+    val accounts = ArrayList<String>()
     val INCOME = 1
     val COST = 0
     var in_out = COST
@@ -114,9 +115,9 @@ class AddOrderActivity : AppCompatActivity() {
             val order = Order(
                 icon.iconImg, icon.typeName,
                 tag, value,
-                Timestamp(Date().time).toString()
+                Timestamp(Date().time).toString(),
+                accountList.selectedItem.toString()
             )
-            Log.d("INOUT", order.Tag)
             thread {
                 // orderDao.deleteAllOrders()
                 order.id = orderDao.insertOrder(order)
@@ -140,10 +141,38 @@ class AddOrderActivity : AppCompatActivity() {
             selectedTag.text = DIYtagEdit.text
             tagAdapter.final_tag = selectedTag.text.toString()
         }
+
+        thread {
+            val accounts_copy = orderDao.loadAllAccounts()
+            for (account in accounts_copy)
+                accounts.add(account.acName)
+        }
+
+        val spinnerAdapter = ArrayAdapter(
+            this, android.R.layout.simple_spinner_item, accounts
+        )
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        with(accountList) {
+            adapter = spinnerAdapter
+            setSelection(0, false)
+            onItemSelectedListener = this@AddOrderActivity
+            prompt = "选择账本"
+            gravity = Gravity.CENTER
+        }
     }
+
     override fun onResume() {
         super.onResume()
         selectedTag.text = "请选择标签"
         tagAdapter.final_tag = ""
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        Toast.makeText(this, "Nothing Selected", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        Toast.makeText(this, "${accountList.selectedItem} Selected", Toast.LENGTH_SHORT).show()
     }
 }

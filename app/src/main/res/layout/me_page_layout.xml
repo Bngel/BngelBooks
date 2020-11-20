@@ -2,14 +2,56 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/me_bg">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="50dp"
+            android:id="@+id/me_header"
+            android:src="@drawable/header_portrait_srh"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bngel"
+            android:textSize="18sp"
+            android:id="@+id/me_name"
+            android:layout_below="@id/me_header"
+            android:gravity="center"
+            android:layout_marginTop="20dp"/>
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/add_no_selected"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:id="@+id/me_add_account"/>
+
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/me_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textColor="@android:color/black"
-        android:text="Me"
-        android:textSize="20sp" />
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="账户:"
+        android:textSize="18sp"
+        android:layout_margin="15dp"
+        android:id="@+id/accountText"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/AccountAll"/>
+
 </LinearLayout>

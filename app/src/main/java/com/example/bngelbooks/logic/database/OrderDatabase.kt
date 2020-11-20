@@ -5,11 +5,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.bngelbooks.logic.dao.OrderDao
+import com.example.bngelbooks.logic.model.Account
 import com.example.bngelbooks.logic.model.Order
 import com.example.bngelbooks.ui.AddOrderLayout.AddOrderActivity
 import com.example.bngelbooks.ui.OrderLayout.OrderPage
 
-@Database (version = 2, entities = [Order::class])
+@Database (version = 1, entities = [Order::class,Account::class])
 abstract class OrderDatabase : RoomDatabase(){
 
     abstract fun orderDao(): OrderDao
