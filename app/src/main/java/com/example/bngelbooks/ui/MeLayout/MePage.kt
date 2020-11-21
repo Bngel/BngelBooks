@@ -61,12 +61,10 @@ class MePage : Fragment() {
     }
 
     private fun init_data() {
-        accounts = listOf(
-            Account(R.drawable.account_icon_blue,"TEST1",100.0),
-            Account(R.drawable.account_icon_orange,"TEST2",200.0),
-            Account(R.drawable.account_icon_pink,"TEST3",300.0),
-            Account(R.drawable.account_icon_green,"TEST4",400.0)
-        )
+        thread {
+            accounts = orderDao.loadAllAccounts() ?:
+                    listOf(Account(R.drawable.account_icon_blue,"TEST",200.0))
+        }.join()
         accountAdapter = AccountAdapter(accounts)
         AccountAll.adapter = accountAdapter
         val LayoutManager = LinearLayoutManager(context)

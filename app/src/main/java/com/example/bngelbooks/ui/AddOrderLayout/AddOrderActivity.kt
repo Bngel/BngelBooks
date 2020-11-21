@@ -122,7 +122,10 @@ class AddOrderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             thread {
                 // orderDao.deleteAllOrders()
                 order.id = orderDao.insertOrder(order)
-            }
+                var update_account = orderDao.loadAccountByName(order.Account)[0]
+                update_account.acValue += if (in_out == COST) -order.Value else order.Value
+                orderDao.updateAccount(update_account)
+            }.join()
 
             WidgetSetting.refresh_needed.value = true
             WidgetSetting.chart_loading.value = true
@@ -148,19 +151,18 @@ class AddOrderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             val accounts_copy = orderDao.loadAllAccounts()
             for (account in accounts_copy)
                 accounts.add(account.acName)
-        }
+        }.join()
 
         val spinnerAdapter = ArrayAdapter(
-            this, android.R.layout.simple_spinner_item, accounts
+            this,R.layout.spinner_layout, accounts
         )
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         with(accountList) {
             adapter = spinnerAdapter
-            setSelection(0, false)
             onItemSelectedListener = this@AddOrderActivity
-            prompt = "选择账本"
             gravity = Gravity.CENTER
+            prompt = "账户选择"
         }
     }
 
@@ -175,6 +177,6 @@ class AddOrderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        Toast.makeText(this, "${accountList.selectedItem} Selected", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "${position} Selected", Toast.LENGTH_SHORT).show()
     }
 }

@@ -132,6 +132,6 @@
         android:src="@drawable/ok"
         android:layout_margin="30dp"
         android:layout_gravity="right|bottom"
-        android:id="@+id/okBtn"/>
+        android:id="@+id/acokBtn"/>
 
 </LinearLayout>
