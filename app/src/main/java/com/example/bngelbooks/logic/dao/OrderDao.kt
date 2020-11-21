@@ -42,4 +42,8 @@ interface OrderDao {
 
     @Query("delete from Orders where Account == :account")
     fun deleteOrdersByAccount(account: String)
+
+    @Query("select * from Orders where Tag like '%' || :tag || '%'")
+    fun loadOrdersByTag(tag: String) : List<Order>
+
 }

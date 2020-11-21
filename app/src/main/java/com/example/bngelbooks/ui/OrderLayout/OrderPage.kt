@@ -1,5 +1,6 @@
 package com.example.bngelbooks.ui.OrderLayout
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,7 +18,9 @@ import com.example.bngelbooks.R
 import com.example.bngelbooks.logic.dao.OrderDao
 import com.example.bngelbooks.logic.database.OrderDatabase
 import com.example.bngelbooks.logic.model.judgeIconType
+import com.example.bngelbooks.ui.OrderSearchLayout.OrderSearchActivity
 import com.example.bngelbooks.ui.WidgetSetting
+import kotlinx.android.synthetic.main.book_selected_layout.*
 import kotlinx.android.synthetic.main.inout_header.*
 import kotlin.concurrent.thread
 
@@ -57,6 +60,10 @@ class OrderPage() : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initRecyclerView()
+        searchBtn.setOnClickListener {
+            val intent = Intent(context,OrderSearchActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onAttach(context: Context) {
