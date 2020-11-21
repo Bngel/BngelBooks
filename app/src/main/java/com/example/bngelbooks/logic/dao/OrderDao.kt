@@ -35,5 +35,11 @@ interface OrderDao {
     fun deleteAccount(account: Account)
 
     @Query("select * from Accounts where acName == :name")
-    fun loadAccountByName(name: String): List<Account>
+    fun loadAccountsByName(name: String): List<Account>
+
+    @Query("select * from Orders where Account == :account")
+    fun loadOrdersByAccount(account: String): List<Order>
+
+    @Query("delete from Orders where Account == :account")
+    fun deleteOrdersByAccount(account: String)
 }

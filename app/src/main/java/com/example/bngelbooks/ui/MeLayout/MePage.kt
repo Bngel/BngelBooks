@@ -52,7 +52,8 @@ class MePage : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        WidgetSetting.setFont(page_context,accountText)
+        WidgetSetting.setFonts(page_context,
+            listOf(me_name,accountText))
         me_add_account.setOnClickListener {
             val intent_add_account = Intent(page_context,AddAccountActivity::class.java)
             startActivityForResult(intent_add_account,ADD_ACCOUNT_INTENT)

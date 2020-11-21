@@ -3,6 +3,7 @@ package com.example.bngelbooks.ui.AddOrderLayout
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.AdapterView
@@ -27,7 +28,7 @@ class AddOrderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
     lateinit var iconAdapter: IconAdapter
     lateinit var tagAdapter: TagAdapter
     lateinit var orderDao: OrderDao
-    val accounts = ArrayList<String>()
+    val accounts = LinkedList<String>()
     val INCOME = 1
     val COST = 0
     var in_out = COST
@@ -111,20 +112,23 @@ class AddOrderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             val tag = tagAdapter.final_tag
             val value_text = orderEdit.text.toString()
             var value: Double = if (value_text.isEmpty()) 0.0 else value_text.toDouble()
-            val account = accountList.selectedItem
+            val account = accountList.selectedItem.toString()
             // if (in_out == COST) value = -value
             val order = Order(
                 icon.iconImg, icon.typeName,
                 tag, value,
                 Timestamp(Date().time).toString(),
-                if (account != null) account.toString() else ""
+                if (account != "不选择账户") account else ""
             )
+
             thread {
                 // orderDao.deleteAllOrders()
                 order.id = orderDao.insertOrder(order)
-                var update_account = orderDao.loadAccountByName(order.Account)[0]
-                update_account.acValue += if (in_out == COST) -order.Value else order.Value
-                orderDao.updateAccount(update_account)
+                if (order.Account != ""){
+                    var update_account = orderDao.loadAccountsByName(order.Account)[0]
+                    update_account.acValue += if (in_out == COST) -order.Value else order.Value
+                    orderDao.updateAccount(update_account)
+                }
             }.join()
 
             WidgetSetting.refresh_needed.value = true
@@ -151,6 +155,7 @@ class AddOrderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             val accounts_copy = orderDao.loadAllAccounts()
             for (account in accounts_copy)
                 accounts.add(account.acName)
+            accounts.addFirst("不选择账户")
         }.join()
 
         val spinnerAdapter = ArrayAdapter(
@@ -173,10 +178,10 @@ class AddOrderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
-        Toast.makeText(this, "Nothing Selected", Toast.LENGTH_SHORT).show()
+
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        Toast.makeText(this, "${position} Selected", Toast.LENGTH_SHORT).show()
+
     }
 }

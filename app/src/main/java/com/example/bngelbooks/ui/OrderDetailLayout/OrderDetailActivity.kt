@@ -1,8 +1,9 @@
 package com.example.bngelbooks.ui.OrderDetailLayout
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import com.example.bngelbooks.R
 import com.example.bngelbooks.logic.dao.OrderDao
 import com.example.bngelbooks.logic.database.OrderDatabase
@@ -10,6 +11,7 @@ import com.example.bngelbooks.logic.model.Order
 import com.example.bngelbooks.logic.model.judgeIconType
 import com.example.bngelbooks.ui.WidgetSetting
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_account_detail.*
 import kotlinx.android.synthetic.main.activity_order_detail.*
 import kotlin.concurrent.thread
 
@@ -41,14 +43,17 @@ class OrderDetailActivity : AppCompatActivity() {
         detail_delete.setOnClickListener {
             thread {
                 orderDao.deleteOrder(order)
-                var update_account = orderDao.loadAccountByName(order.Account)[0]
-                update_account.acValue += if (judgeIconType(order.TypeName) == "支出") order.Value else -order.Value
-                orderDao.updateAccount(update_account)
+                if (order.Account != ""){
+                    var update_account = orderDao.loadAccountsByName(order.Account)[0]
+                    update_account.acValue += if (judgeIconType(order.TypeName) == "支出") order.Value else -order.Value
+                    orderDao.updateAccount(update_account)
+                }
             }
             WidgetSetting.refresh_needed.value = true
             WidgetSetting.chart_loading.value = true
             WidgetSetting.account_loading.value = true
             finish()
         }
+
     }
 }

@@ -1,7 +1,11 @@
 package com.example.bngelbooks.ui.AddAccountLayout
 
+import android.app.Dialog
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.example.bngelbooks.R
@@ -15,6 +19,7 @@ import kotlin.concurrent.thread
 class AddAccountActivity : AppCompatActivity() {
 
     lateinit var orderDao: OrderDao
+    lateinit var accounts: List<Account>
     val current_acIcon = MutableLiveData<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,13 +52,51 @@ class AddAccountActivity : AppCompatActivity() {
         })
 
         acokBtn.setOnClickListener {
-            val account = Account(current_acIcon.value!!,accountNameEdit.text.toString(),
-                accountValueEdit.text.toString().toDouble())
+            val accountName = accountNameEdit.text.toString()?:""
+            val accountImg = current_acIcon.value!!
+            val accountValueText = accountValueEdit.text.toString()
+            val accountValue = if (accountValueText == "") 0.0 else accountValueText.toDouble()
             thread {
-                orderDao.insertAccount(account)
+                accounts = orderDao.loadAllAccounts()
+            }.join()
+            val nameEmpty = accountName == ""
+            var nameExists = false
+            for (ac in accounts) {
+                if (ac.acName == accountName) {
+                    nameExists = true
+                    break
+                }
             }
-            WidgetSetting.account_loading.value = true
-            finish()
+            if (nameExists){
+                AlertDialog.Builder(this)
+                    .setIcon(accountImg)
+                    .setTitle("警告:")
+                    .setMessage("账户名称已存在\n请重新输入")
+                    .setPositiveButton("确定", object: DialogInterface.OnClickListener{
+                        override fun onClick(dialog: DialogInterface?, which: Int) {
+                        }
+                    })
+                    .show()
+            }
+            else if (nameEmpty) {
+                AlertDialog.Builder(this)
+                    .setIcon(accountImg)
+                    .setTitle("警告:")
+                    .setMessage("请输入账户名称")
+                    .setPositiveButton("确定", object: DialogInterface.OnClickListener{
+                        override fun onClick(dialog: DialogInterface?, which: Int) {
+                        }
+                    })
+                    .show()
+            }
+            else {
+                val account = Account(accountImg,accountName,accountValue)
+                thread {
+                    orderDao.insertAccount(account)
+                }
+                WidgetSetting.account_loading.value = true
+                finish()
+            }
         }
 
         accountcloseBtn.setOnClickListener {
