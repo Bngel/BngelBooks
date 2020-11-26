@@ -38,6 +38,15 @@
             android:background="@android:color/transparent"
             android:id="@+id/me_add_account"/>
 
+        <ImageButton
+            android:background="@android:color/transparent"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/setting"
+            android:layout_toLeftOf="@id/me_add_account"
+            android:layout_margin="15dp"
+            android:id="@+id/me_setting"/>
+
     </RelativeLayout>
 
     <TextView

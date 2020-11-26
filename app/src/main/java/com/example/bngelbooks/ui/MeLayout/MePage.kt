@@ -14,6 +14,7 @@ import com.example.bngelbooks.logic.dao.OrderDao
 import com.example.bngelbooks.logic.database.OrderDatabase
 import com.example.bngelbooks.logic.model.Account
 import com.example.bngelbooks.ui.AddAccountLayout.AddAccountActivity
+import com.example.bngelbooks.ui.MeSettings.SettingActivity
 import com.example.bngelbooks.ui.WidgetSetting
 import kotlinx.android.synthetic.main.me_page_layout.*
 import kotlin.concurrent.thread
@@ -57,6 +58,10 @@ class MePage : Fragment() {
         me_add_account.setOnClickListener {
             val intent_add_account = Intent(page_context,AddAccountActivity::class.java)
             startActivityForResult(intent_add_account,ADD_ACCOUNT_INTENT)
+        }
+        me_setting.setOnClickListener {
+            val setting_intent = Intent(page_context,SettingActivity::class.java)
+            startActivity(setting_intent)
         }
         init_data()
     }
