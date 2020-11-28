@@ -28,8 +28,8 @@ class RecordService : Service() {
             .setContentIntent((PendingIntent
                 .getActivity(this,0,record_intent,PendingIntent.FLAG_UPDATE_CURRENT)))
             .setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.rem_icon))
-            .setSmallIcon(R.mipmap.ic_launcher)
-            .setContentTitle("记账")
+            .setSmallIcon(R.drawable.splash_icon)
+            .setContentTitle("随心记")
             .setContentText("立即打开记账界面")
             .setWhen(System.currentTimeMillis())
             .build()

@@ -58,6 +58,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.openxu.viewlib:OXViewLib:1.0.0'
     implementation 'com.github.zcweng:switch-button:0.0.3@aar'
+    implementation 'com.rbddevs.splashy:splashy:1.3.0'
     kapt 'androidx.room:room-compiler:2.2.5'
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

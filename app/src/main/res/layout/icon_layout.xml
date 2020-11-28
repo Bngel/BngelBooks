@@ -4,14 +4,16 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/iconImg"/>
 
     <TextView
         android:layout_width="50dp"
         android:layout_height="30dp"
         android:layout_marginLeft="3dp"
+        android:gravity="left"
+        android:textColor="@color/tagSelected"
         android:id="@+id/iconType"/>
 
 </LinearLayout>

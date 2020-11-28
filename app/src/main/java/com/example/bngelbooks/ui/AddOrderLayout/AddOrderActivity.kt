@@ -58,7 +58,6 @@ class AddOrderActivity : BaseActivity(), AdapterView.OnItemSelectedListener {
 
         closeBtn.setOnClickListener {
             val from_Service = intent.getBooleanExtra("from_Service",false)
-            Log.d("FROMWHERE",from_Service.toString())
             if (from_Service)
                 ActivityCollector.finishAll()
             else
@@ -139,7 +138,11 @@ class AddOrderActivity : BaseActivity(), AdapterView.OnItemSelectedListener {
             WidgetSetting.refresh_needed.value = true
             WidgetSetting.chart_loading.value = true
             WidgetSetting.account_loading.value = true
-            finish()
+            val from_Service = intent.getBooleanExtra("from_Service",false)
+            if (from_Service)
+                ActivityCollector.finishAll()
+            else
+                finish()
         }
 
         DIYtagText.setOnClickListener {

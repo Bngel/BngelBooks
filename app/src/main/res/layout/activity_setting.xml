@@ -49,6 +49,7 @@
             android:id="@+id/msgRecordText"
             android:layout_marginLeft="10dp"
             android:text="随心记"
+            android:textColor="@color/tagSelected"
             android:textSize="26sp"/>
 
         <com.suke.widget.SwitchButton

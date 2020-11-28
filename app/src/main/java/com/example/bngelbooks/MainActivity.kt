@@ -12,6 +12,7 @@ import com.example.bngelbooks.ui.AddOrderLayout.AddOrderActivity
 import com.example.bngelbooks.ui.MeLayout.MePage
 import com.example.bngelbooks.ui.OrderLayout.OrderPage
 import com.example.bngelbooks.ui.StatisticsLayout.StatisticsPage
+import com.rbddevs.splashy.Splashy
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.collections.ArrayList
 
@@ -25,6 +26,7 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initSplash()
         initData()
         initBNVE()
         initEvent()
@@ -96,5 +98,18 @@ class MainActivity : BaseActivity() {
         val service_Intent = Intent(this,RecordService::class.java)
         if (isSwitched)
             startService(service_Intent)
+    }
+
+    private fun initSplash() {
+        Splashy(this)
+            .setLogo(R.drawable.splash_icon)
+            .setTitle("Bngel")
+            .setTitleColor("#FFFFFF")
+            .setSubTitle("Bngel's Cost Record")
+            .setProgressColor(R.color.white)
+            .setBackgroundResource(R.drawable.splash_bg)
+            .setFullScreen(true)
+            .setTime(2000)
+            .show()
     }
 }

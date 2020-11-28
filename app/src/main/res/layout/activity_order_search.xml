@@ -6,10 +6,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="35dp"
         android:layout_margin="10dp"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="3dp">
 
         <ImageButton
             android:layout_width="30dp"
@@ -31,7 +31,7 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginRight="20dp"
             android:id="@+id/searchEnterBtn"
             android:background="@android:color/transparent"
             android:layout_alignParentRight="true"

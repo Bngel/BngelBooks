@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="收入"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="#FFFFFF"
                 android:layout_marginRight="10dp"
                 android:id="@+id/incomeBtn"/>
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="|"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="#FFFFFF"
                 android:id="@+id/partLine"
                 android:layout_toRightOf="@id/incomeBtn"/>
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:text="支出"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/partLine"
                 android:id="@+id/outcomeBtn"/>
@@ -117,6 +117,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:textSize="24sp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/tagSelected"
                     android:id="@+id/SmallIconType"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
@@ -126,7 +128,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_margin="5dp"
                 android:src="@drawable/note"
                 android:gravity="center_horizontal"
                 android:id="@+id/tagText"/>
@@ -169,6 +171,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="-1dp"
                     android:clickable="false"
+                    android:textColor="@color/tagSelected"
                     android:text="-自定义标签-"
                     android:textSize="12sp" />
 

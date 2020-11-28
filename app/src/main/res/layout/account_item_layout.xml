@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/account_text"
+            android:textColor="@color/tagSelected"
             android:gravity="right|center_vertical"/>
 
         <TextView
@@ -26,6 +27,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/account_value"
             android:layout_below="@id/account_text"
+            android:textColor="@color/tagSelected"
             android:layout_marginTop="5dp"
             android:gravity="right|center_vertical"/>
 

@@ -59,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:textSize="24sp"
+            android:textColor="@color/tagSelected"
             android:id="@+id/acDetailName"/>
 
         <TextView
@@ -68,6 +69,7 @@
             android:layout_below="@id/acDetailName"
             android:layout_height="wrap_content"
             android:textSize="30sp"
+            android:textColor="@color/tagSelected"
             android:id="@+id/acDetailValue"/>
 
     </RelativeLayout>
