@@ -23,7 +23,8 @@
         <activity android:name=".ui.AddOrderLayout.AddOrderActivity" />
         <activity android:name=".ui.OrderLayout.OrderPage"
             tools:ignore="Instantiatable" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

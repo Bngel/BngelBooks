@@ -1,17 +1,17 @@
 package com.example.bngelbooks.ui.AddOrderLayout
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.bngelbooks.ActivityCollector
+import com.example.bngelbooks.BaseActivity
 import com.example.bngelbooks.R
 import com.example.bngelbooks.logic.dao.OrderDao
 import com.example.bngelbooks.logic.database.OrderDatabase
@@ -24,7 +24,7 @@ import kotlin.collections.ArrayList
 import kotlin.concurrent.thread
 import androidx.lifecycle.Observer as Observer
 
-class AddOrderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+class AddOrderActivity : BaseActivity(), AdapterView.OnItemSelectedListener {
     lateinit var iconAdapter: IconAdapter
     lateinit var tagAdapter: TagAdapter
     lateinit var orderDao: OrderDao
@@ -57,7 +57,12 @@ class AddOrderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         tagsView.layoutManager = TagLayoutManager
 
         closeBtn.setOnClickListener {
-            finish()
+            val from_Service = intent.getBooleanExtra("from_Service",false)
+            Log.d("FROMWHERE",from_Service.toString())
+            if (from_Service)
+                ActivityCollector.finishAll()
+            else
+                finish()
         }
 
         WidgetSetting.current_icon.observe(this, Observer { new_Icon ->

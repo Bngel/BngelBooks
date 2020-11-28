@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.bngelbooks.BaseActivity
 import com.example.bngelbooks.R
 import com.example.bngelbooks.logic.dao.OrderDao
 import com.example.bngelbooks.logic.database.OrderDatabase
@@ -16,7 +17,7 @@ import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_account_detail.*
 import kotlin.concurrent.thread
 
-class AccountDetailActivity : AppCompatActivity() {
+class AccountDetailActivity : BaseActivity() {
 
     lateinit var orderadapter :OrderAdapter
     lateinit var orders: List<Order>

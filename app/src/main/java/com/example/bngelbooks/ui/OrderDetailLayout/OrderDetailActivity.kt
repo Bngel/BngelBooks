@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import com.example.bngelbooks.BaseActivity
 import com.example.bngelbooks.R
 import com.example.bngelbooks.logic.dao.OrderDao
 import com.example.bngelbooks.logic.database.OrderDatabase
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_account_detail.*
 import kotlinx.android.synthetic.main.activity_order_detail.*
 import kotlin.concurrent.thread
 
-class OrderDetailActivity : AppCompatActivity() {
+class OrderDetailActivity : BaseActivity() {
 
     lateinit var orderDao: OrderDao
 

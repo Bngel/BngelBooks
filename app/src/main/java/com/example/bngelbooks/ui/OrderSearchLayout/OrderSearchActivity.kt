@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.bngelbooks.BaseActivity
 import com.example.bngelbooks.R
 import com.example.bngelbooks.logic.dao.OrderDao
 import com.example.bngelbooks.logic.database.OrderDatabase
@@ -13,7 +14,7 @@ import com.example.bngelbooks.ui.WidgetSetting
 import kotlinx.android.synthetic.main.activity_order_search.*
 import kotlin.concurrent.thread
 
-class OrderSearchActivity : AppCompatActivity() {
+class OrderSearchActivity : BaseActivity() {
     lateinit var orderDao: OrderDao
     lateinit var searchAdaper: OrderAdapter
     lateinit var orders : List<Order>

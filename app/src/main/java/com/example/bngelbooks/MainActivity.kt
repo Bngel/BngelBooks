@@ -1,15 +1,13 @@
 package com.example.bngelbooks
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.example.bngelbooks.logic.dao.OrderDao
-import com.example.bngelbooks.logic.database.OrderDatabase
+import com.example.bngelbooks.logic.network.RecordService
 import com.example.bngelbooks.ui.AddOrderLayout.AddOrderActivity
 import com.example.bngelbooks.ui.MeLayout.MePage
 import com.example.bngelbooks.ui.OrderLayout.OrderPage
@@ -18,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.collections.ArrayList
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var fragments: ArrayList<Fragment>
 
@@ -30,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         initData()
         initBNVE()
         initEvent()
+        initService()
     }
 
     private fun initEvent() {
@@ -89,5 +88,13 @@ class MainActivity : AppCompatActivity() {
         init {
             this.data = data
         }
+    }
+
+    private fun initService() {
+        val isSwitched = getSharedPreferences("SwitchStatus", Context.MODE_PRIVATE)
+            .getBoolean("record",false)
+        val service_Intent = Intent(this,RecordService::class.java)
+        if (isSwitched)
+            startService(service_Intent)
     }
 }

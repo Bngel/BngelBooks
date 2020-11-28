@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import com.example.bngelbooks.BaseActivity
 import com.example.bngelbooks.R
 import com.example.bngelbooks.logic.dao.OrderDao
 import com.example.bngelbooks.logic.database.OrderDatabase
@@ -16,7 +17,7 @@ import com.example.bngelbooks.ui.WidgetSetting
 import kotlinx.android.synthetic.main.activity_add_account.*
 import kotlin.concurrent.thread
 
-class AddAccountActivity : AppCompatActivity() {
+class AddAccountActivity : BaseActivity() {
 
     lateinit var orderDao: OrderDao
     lateinit var accounts: List<Account>

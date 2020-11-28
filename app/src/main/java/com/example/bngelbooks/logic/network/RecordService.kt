@@ -3,12 +3,10 @@ package com.example.bngelbooks.logic.network
 import android.app.*
 import android.content.Context
 import android.content.Intent
-import android.content.res.Resources
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
-import com.example.bngelbooks.MainActivity
 import com.example.bngelbooks.R
 import com.example.bngelbooks.ui.AddOrderLayout.AddOrderActivity
 
@@ -28,7 +26,7 @@ class RecordService : Service() {
 
         val notification = NotificationCompat.Builder(this,"record_service")
             .setContentIntent((PendingIntent
-                .getActivity(this,0,record_intent,0)))
+                .getActivity(this,0,record_intent,PendingIntent.FLAG_UPDATE_CURRENT)))
             .setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.rem_icon))
             .setSmallIcon(R.mipmap.ic_launcher)
             .setContentTitle("记账")
@@ -40,8 +38,6 @@ class RecordService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-
-
         return super.onStartCommand(intent, flags, startId)
     }
 

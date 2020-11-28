@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.bngelbooks.BaseActivity
 import com.example.bngelbooks.R
 import com.example.bngelbooks.logic.network.RecordService
 import com.example.bngelbooks.ui.WidgetSetting
@@ -12,7 +13,7 @@ import com.suke.widget.SwitchButton
 import kotlinx.android.synthetic.main.activity_setting.*
 
 
-class SettingActivity : AppCompatActivity() {
+class SettingActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
