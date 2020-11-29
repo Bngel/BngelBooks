@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.cost_item_layout.view.*
 class OrderAdapter(val items: List<Order>) : RecyclerView.Adapter<OrderAdapter.ViewHolder>(){
 
     inner class ViewHolder(view: View):RecyclerView.ViewHolder(view) {
-        val TypeImg: ImageView = view.findViewById(R.id.EatImg)
+        val TypeImg: ImageView = view.findViewById(R.id.costImg)
         val TypeName: TextView = view.findViewById(R.id.TypeText)
         val TagName: TextView = view.findViewById(R.id.TagText)
         val Value: TextView = view.findViewById(R.id.ValueText)

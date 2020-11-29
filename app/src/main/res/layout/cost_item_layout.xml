@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
+    android:layout_height="70dp"
     android:orientation="horizontal">
 
     <ImageView
@@ -9,9 +9,8 @@
         android:layout_marginLeft="35dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
-        android:src="@drawable/eat"
         android:layout_gravity="center_vertical"
-        android:id="@+id/EatImg"/>
+        android:id="@+id/costImg"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -22,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="15dp"
             android:textColor="#000000"
             android:id="@+id/TypeText"/>
 
@@ -32,7 +31,7 @@
             android:layout_below="@+id/TypeText"
             android:layout_marginTop="5dp"
             android:textSize="12sp"
-            android:textColor="@color/tagSelected"
+            android:textColor="@color/defaultText"
             android:id="@+id/TagText"/>
     </RelativeLayout>
 
@@ -41,7 +40,7 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:gravity="right"
-        android:textColor="@color/tagSelected"
+        android:textColor="@color/defaultText"
         android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
         android:id="@+id/ValueText"/>

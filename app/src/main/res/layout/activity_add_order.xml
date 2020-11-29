@@ -171,7 +171,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="-1dp"
                     android:clickable="false"
-                    android:textColor="@color/tagSelected"
+                    android:textColor="@color/defaultText"
                     android:text="-自定义标签-"
                     android:textSize="12sp" />
 

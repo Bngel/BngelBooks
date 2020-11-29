@@ -53,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="32sp"
-            android:textColor="@color/tagSelected"
+            android:textColor="@color/defaultText"
             android:layout_marginLeft="110dp"
             android:layout_marginTop="10dp"
             android:id="@+id/detail_text"/>

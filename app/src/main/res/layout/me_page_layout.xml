@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Bngel"
+            android:textColor="@color/defaultText"
             android:textSize="18sp"
             android:id="@+id/me_name"
             android:layout_below="@id/me_header"

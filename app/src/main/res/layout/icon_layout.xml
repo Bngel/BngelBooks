@@ -13,7 +13,7 @@
         android:layout_height="30dp"
         android:layout_marginLeft="3dp"
         android:gravity="left"
-        android:textColor="@color/tagSelected"
+        android:textColor="@color/defaultText"
         android:id="@+id/iconType"/>
 
 </LinearLayout>

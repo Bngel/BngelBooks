@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources>>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorNoSelected">#DB9ABC</color>
     <color name="tagSelected">#bfbfbf</color>
     <color name="colorWhite">#ffffff</color>
-
+    <color name="defaultText">#808080</color>
 </resources>

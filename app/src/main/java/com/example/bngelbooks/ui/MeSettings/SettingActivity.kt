@@ -18,7 +18,7 @@ class SettingActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
         initSwitchButton()
-        WidgetSetting.setFont(this,msgRecordText)
+        WidgetSetting.setFonts(this,listOf(msgRecordText,setting_title))
         setting_closeBtn.setOnClickListener {
             finish()
         }
