@@ -36,7 +36,7 @@ class OrderSearchActivity : BaseActivity() {
 
     private fun loadOrders() {
         thread {
-            orders = orderDao.loadOrdersByTag(searchEdit.text.toString())
+            orders = orderDao.loadOrdersByTag(searchEdit.text.toString()).reversed()
         }.join()
         searchAdaper = OrderAdapter(orders)
         ordersearchList.adapter = searchAdaper

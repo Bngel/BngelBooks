@@ -22,6 +22,7 @@ import com.example.bngelbooks.ui.OrderSearchLayout.OrderSearchActivity
 import com.example.bngelbooks.ui.WidgetSetting
 import kotlinx.android.synthetic.main.book_selected_layout.*
 import kotlinx.android.synthetic.main.inout_header.*
+import java.util.*
 import kotlin.concurrent.thread
 
 class OrderPage() : Fragment() {
@@ -73,7 +74,9 @@ class OrderPage() : Fragment() {
 
     private fun initOrdersList() {
         thread {
-            orders = orderDao.loadAllOrders().asReversed()
+            val year = Calendar.getInstance().get(Calendar.YEAR).toString()
+            val month = (Calendar.getInstance().get(Calendar.MONTH)+1).toString()
+            orders = orderDao.loadOrdersByMonth(year,month).asReversed()
         }.join()
     }
 

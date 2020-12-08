@@ -13,6 +13,7 @@ import com.example.bngelbooks.logic.database.OrderDatabase
 import com.example.bngelbooks.logic.model.*
 import com.example.bngelbooks.ui.WidgetSetting
 import kotlinx.android.synthetic.main.statistics_page_layout.*
+import java.util.*
 import kotlin.concurrent.thread
 
 
@@ -91,7 +92,9 @@ class StatisticsPage: Fragment() {
     }
 
     private fun init_data() {
-        orders = orderDao.loadAllOrders()
+        val year = Calendar.getInstance().get(Calendar.YEAR).toString()
+        val month = (Calendar.getInstance().get(Calendar.MONTH)+1).toString()
+        orders = orderDao.loadOrdersByMonth(year,month).asReversed()
         init_sum_list()
         for (order in orders) {
             if (judgeIconType(order.TypeName) == "支出") {

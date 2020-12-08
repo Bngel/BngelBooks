@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/addAccountTitle"
             android:layout_margin="12dp"
-            android:textSize="17sp"
+            android:textSize="14sp"
             android:text="添 加 账 户"
             android:textColor="@android:color/white"
             android:gravity="center"/>

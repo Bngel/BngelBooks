@@ -3,6 +3,7 @@ package com.example.bngelbooks.logic.dao
 import androidx.room.*
 import com.example.bngelbooks.logic.model.Account
 import com.example.bngelbooks.logic.model.Order
+import java.time.Month
 
 @Dao
 interface OrderDao {
@@ -45,5 +46,8 @@ interface OrderDao {
 
     @Query("select * from Orders where Tag like '%' || :tag || '%'")
     fun loadOrdersByTag(tag: String) : List<Order>
+
+    @Query("select * from Orders where Time like :year || '-'|| :month ||'-%'")
+    fun loadOrdersByMonth(year:String, month: String) : List<Order>
 
 }
